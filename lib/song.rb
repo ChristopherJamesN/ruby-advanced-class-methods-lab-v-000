@@ -2,10 +2,6 @@ class Song
   attr_accessor :name, :artist_name
   @@all = []
 
-  def artist_name=(name)
-    @artist_name=name
-  end
-
   def self.all
     @@all
   end
@@ -52,14 +48,14 @@ class Song
   def self.new_from_filename(filename)
     filename.slice!(".mp3")
     filename = filename.split(" - ")
-    self.new_by_name(filename[1])
+    song=self.new_by_name(filename[1])
     song.artist_name = filename[0]
   end
 
   def self.create_from_filename(filename)
     filename.slice!(".mp3")
     filename = filename.split(" - ")
-    self.find_or_create_by_name(filename[1])
+    song=self.find_or_create_by_name(filename[1])
     song.artist_name = filename[0]
   end
 
